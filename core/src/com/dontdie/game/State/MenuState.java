@@ -13,7 +13,7 @@ public class MenuState extends State {
         super(gsm);
         cam.setToOrtho(false, DontDie.WIDTH/2, DontDie.HEIGHT/2);
         background = new Texture("Hills Free.png");
-        playBtn = new Texture("gem3.png");
+        playBtn = new Texture("gem3@0.25x.png");
     }
 
     @Override
