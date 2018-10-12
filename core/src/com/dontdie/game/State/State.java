@@ -14,9 +14,7 @@ public abstract class State {
         cam = new OrthographicCamera();
         mouse = new Vector3();
 
-
     }
-
 
 
     protected abstract void handleInput();

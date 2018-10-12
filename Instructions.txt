@@ -1,0 +1,5 @@
+Extract and open the folder in android studio
+make sure you have a virtual android device I used nexus 5
+
+For Mac go to the Preferences > Build, Execution, Deployment > Compiler and uncheck the configure on demand.
+For Linux/Windows go to the File > Settings > Build, Execution, Deployment > Compiler and uncheck the configure on demand.

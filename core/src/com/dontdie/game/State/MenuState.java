@@ -8,10 +8,12 @@ import com.dontdie.game.DontDie;
 public class MenuState extends State {
     private Texture background;
     private Texture playBtn;
+
     public MenuState(GameStateManager gsm) {
         super(gsm);
-        background = new Texture("glacial_mountains.png");
-        playBtn = new Texture("gem3@0.25x.png");
+        cam.setToOrtho(false, DontDie.WIDTH/2, DontDie.HEIGHT/2);
+        background = new Texture("Hills Free.png");
+        playBtn = new Texture("gem3.png");
     }
 
     @Override
@@ -29,17 +31,18 @@ public class MenuState extends State {
 
     @Override
     public void render(SpriteBatch sb) {
+        sb.setProjectionMatrix(cam.combined);
+
         sb.begin();
-        sb.draw(background, 0,0, DontDie.WIDTH, DontDie.HEIGHT);
-        sb.draw(playBtn, (DontDie.WIDTH /2 )- (playBtn.getWidth()/2), DontDie.HEIGHT);
+        sb.draw(background, 0,0);
+        sb.draw(playBtn, cam.position.x - playBtn.getWidth()/2,cam.position.y);
         sb.end();
+
     }
 
-    public void dispose(){
-        background.dispose();
+    @Override
+    public void dispose() {
+        background.dispose();;
         playBtn.dispose();
-
     }
-
-
 }
