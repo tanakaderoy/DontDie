@@ -2,6 +2,7 @@ package com.dontdie.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector3;
+import com.dontdie.game.DontDie;
 
 public class MainCharacter {
     private static final int GRAVITY = -15;
@@ -37,13 +38,16 @@ public class MainCharacter {
         if(position.y<0){
             position.y=0;
         }
+        if (position.y > DontDie.HEIGHT - 32){
+            position.y = DontDie.HEIGHT - 32;
+        }
 
         velocity.scl(1/dt);
 
     }
 
     public void move(){
-        velocity.y = 250;
+        velocity.y = 350;
     }
 
 }

@@ -1,11 +1,13 @@
 package com.dontdie.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import com.dontdie.game.sprites.MainCharacter;
 import com.dontdie.game.DontDie;
 
 public class BossCharacter {
-    private static final int Y_MOVEMENT = 5;
+    private static final int Y_MOVEMENT = 8;
     private Vector3 position;
     private Vector3 goUp;
     private Vector3 goDown;
@@ -28,6 +30,8 @@ public class BossCharacter {
         bC = new Texture("FlameDemon Evolved.png");
 
     }
+
+
     public void update() {
         if (position.y < 0){
             position.y = 0;
@@ -37,9 +41,10 @@ public class BossCharacter {
             position.y = DontDie.HEIGHT - 64;
             up = false;
         }
+
         if (up) {
             position.add(goUp);
-        }else{
+        }else {
             position.add(goDown);
         }
 
