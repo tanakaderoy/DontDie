@@ -1,9 +1,7 @@
 package com.dontdie.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
-import com.dontdie.game.sprites.MainCharacter;
 import com.dontdie.game.DontDie;
 
 public class BossCharacter {
@@ -12,14 +10,14 @@ public class BossCharacter {
     private Vector3 goUp;
     private Vector3 goDown;
     private boolean up;
-    private Texture bC;
+    private Texture bossCharacter;
 
     public Vector3 getPosition() {
         return position;
     }
 
-    public Texture getbC() {
-        return bC;
+    public Texture getBossCharacter() {
+        return bossCharacter;
     }
 
     public BossCharacter(int x, int y) {
@@ -27,7 +25,7 @@ public class BossCharacter {
         goUp = new Vector3(0, Y_MOVEMENT,0);
         goDown = new Vector3(0, -Y_MOVEMENT,0);
         up = true;
-        bC = new Texture("FlameDemon Evolved.png");
+        bossCharacter = new Texture("FlameDemon Evolved.png");
 
     }
 

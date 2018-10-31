@@ -26,13 +26,13 @@ public class Projectile {
         pew = new Texture("fireball.png");
     }
 
-    public void update(BossCharacter bC){
+    public boolean update(BossCharacter bC){
 
         if (position.x< -5){
-            position.x = start;
-            position.y = bC.getPosition().y;
+            return false;
         }
         position.add(shoot_velo);
+        return true;
     }
 }
 

@@ -8,15 +8,15 @@ public class MainCharacter {
     private static final int GRAVITY = -15;
     private Vector3 position;
     private Vector3 velocity;
-    private Texture mC;
+    private Texture mainCharacter;
 
     public Vector3 getPosition() {
         return position;
     }
 
 
-    public Texture getmC() {
-        return mC;
+    public Texture getMainCharacter() {
+        return mainCharacter;
     }
 
     public MainCharacter(int x, int y){
@@ -24,7 +24,7 @@ public class MainCharacter {
 
         position = new Vector3(x, y,0);
         velocity = new Vector3(0,0,0);
-        mC = new Texture("player.png");
+        mainCharacter = new Texture("player.png");
 
     }
 
