@@ -21,31 +21,37 @@ public class BossCharacter {
     }
 
     public BossCharacter(int x, int y) {
-        position = new Vector3(x,y,0);
-        goUp = new Vector3(0, Y_MOVEMENT,0);
-        goDown = new Vector3(0, -Y_MOVEMENT,0);
-        up = true;
+        position = new Vector3(x, y, 0);
+        goUp = new Vector3(0, Y_MOVEMENT, 0);
+        goDown = new Vector3(0, -Y_MOVEMENT, 0);
+        up = false;
         bossCharacter = new Texture("FlameDemon Evolved.png");
 
     }
 
 
-    public void update() {
-        if (position.y < 0){
+    public void update(MainCharacter mainCharacter) {
+
+        if (position.y < 0) {
             position.y = 0;
-            up = true;
         }
-        if (position.y > DontDie.HEIGHT - 64){
+
+        if (position.y > DontDie.HEIGHT - 64) {
             position.y = DontDie.HEIGHT - 64;
+        }
+
+        if (position.y >= mainCharacter.getPosition().y + 60) {
             up = false;
+        }
+
+        if (position.y < mainCharacter.getPosition().y - 60) {
+            up = true;
         }
 
         if (up) {
             position.add(goUp);
-        }else {
+        } else {
             position.add(goDown);
         }
-
-
     }
 }

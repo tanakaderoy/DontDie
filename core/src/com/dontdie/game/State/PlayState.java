@@ -16,7 +16,7 @@ public class PlayState extends State {
     private BossCharacter bossCharacter;
     private List<Projectile> projectileList;
     private Texture backGround;
-    private float delay =  0.5f;
+    private float delay =  0.4f;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -34,6 +34,7 @@ public class PlayState extends State {
     protected void handleInput() {
         if(Gdx.input.justTouched()){
             mainCharacter.move();
+           // bossCharacter.MoveToBoss(mainCharacter);
         }
     }
 
@@ -42,7 +43,7 @@ public class PlayState extends State {
     public void update(float dt) {
         handleInput();
         mainCharacter.update(dt);
-        bossCharacter.update();
+        bossCharacter.update(mainCharacter);
         for( int i = 0; i < projectileList.size(); ) {
             Projectile projectile = projectileList.get(i);
             if( projectile.update(bossCharacter) )
@@ -54,7 +55,7 @@ public class PlayState extends State {
         delay -= dt;
         if( delay < 0.0f ) {
             projectileList.add(new   Projectile((int) bossCharacter.getPosition().x, (int) bossCharacter.getPosition().y));
-            delay = 0.5f;
+            delay = 0.4f;
         }
     }
 
