@@ -10,7 +10,7 @@ public class Projectile {
     private Vector3 position;
     private Vector3 shoot_velo;
     private Texture pew;
-    private int start;
+    private float start;
     private Rectangle hitArea;
 
     public Vector3 getPosition() {
@@ -21,7 +21,7 @@ public class Projectile {
         return pew;
     }
 
-    public Projectile(int x, int y){
+    public Projectile(float x, float y){
         start = x;
         position = new Vector3(x, y, 0);
         shoot_velo = new Vector3(-9, 0, 0);

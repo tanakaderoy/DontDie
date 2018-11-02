@@ -21,6 +21,8 @@ public class PlayState extends State {
     private Texture backGround;
     private float shootDelay =  2.5f;
     private float itemDelay = 10.0f;
+    Controller controller;
+    Projectile projectile;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -33,6 +35,8 @@ public class PlayState extends State {
         //projectileList.add( new Projectile((int) bossCharacter.getPosition().x, (int) bossCharacter.getPosition().y));
         cam.setToOrtho(false, DontDie.WIDTH, DontDie.HEIGHT);
         backGround = new Texture("Background-1.png");
+        controller = new Controller();
+        projectile = new Projectile(mainCharacter.getPosition().x,mainCharacter.getPosition().y);
 
     }
 
@@ -40,7 +44,10 @@ public class PlayState extends State {
     protected void handleInput() {
         if(Gdx.input.justTouched()){
             mainCharacter.move();
-        }
+        }/*
+        if(controller.isUpPressed()) {
+            mainCharacter.move();
+        }*/
     }
 
 
@@ -80,7 +87,16 @@ public class PlayState extends State {
         if (itemDelay < 0.0f){
             itemList.add(new Item(DontDie.WIDTH, MathUtils.random(10 , DontDie.HEIGHT - 10), "coin.png"));
             itemDelay = 10.0f;
+        }/*Tanaka
+        //shooting
+        if(controller.isUpPressed()) {
+            projectileList.add(new Projectile(mainCharacter.getPosition().x+80,mainCharacter.getPosition().y+80));
         }
+        //update
+        for(Projectile projectile : projectileList){
+            projectile.update(bossCharacter);
+
+        }*/
     }
 
     @Override
@@ -95,8 +111,13 @@ public class PlayState extends State {
         }
         for (Item item : itemList){
             spriteBatch.draw(item.getItemTexture(), item.getPosition().x, item.getPosition().y);
-        }
+        }/* TAnaka
+        for( Projectile projectile : projectileList) {
+            spriteBatch.draw(projectile.getPew(), projectile.getPosition().x, projectile.getPosition().y);
+        }*/
+
         spriteBatch.end();
+        //controller.draw();
     }
 
     @Override

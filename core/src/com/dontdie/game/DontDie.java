@@ -13,7 +13,7 @@ public class DontDie extends ApplicationAdapter {
 
 	public static final String TITLE = "Don't Die";
 	private GameStateManager gsm;
-	private SpriteBatch batch;
+	public static SpriteBatch batch;
 
 
 	@Override
