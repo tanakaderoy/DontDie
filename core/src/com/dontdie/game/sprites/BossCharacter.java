@@ -1,6 +1,7 @@
 package com.dontdie.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.dontdie.game.DontDie;
 
@@ -11,6 +12,8 @@ public class BossCharacter {
     private Vector3 goDown;
     private boolean up;
     private Texture bossCharacter;
+    private Rectangle hitBox;
+
 
     public Vector3 getPosition() {
         return position;
@@ -26,6 +29,7 @@ public class BossCharacter {
         goDown = new Vector3(0, -Y_MOVEMENT, 0);
         up = false;
         bossCharacter = new Texture("FlameDemon Evolved.png");
+        hitBox = new Rectangle(x,y,bossCharacter.getWidth(),bossCharacter.getHeight());
 
     }
 
@@ -53,5 +57,10 @@ public class BossCharacter {
         } else {
             position.add(goDown);
         }
+        hitBox.setPosition(position.x,position.y);
+    }
+
+    public Rectangle getHitBox() {
+        return hitBox;
     }
 }

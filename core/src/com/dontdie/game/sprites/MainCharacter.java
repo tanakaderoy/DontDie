@@ -1,6 +1,7 @@
 package com.dontdie.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.dontdie.game.DontDie;
 
@@ -9,6 +10,7 @@ public class MainCharacter {
     private Vector3 position;
     private Vector3 velocity;
     private Texture mainCharacter;
+    private Rectangle hitBox;
 
     public Vector3 getPosition() {
         return position;
@@ -25,6 +27,7 @@ public class MainCharacter {
         position = new Vector3(x, y,0);
         velocity = new Vector3(0,0,0);
         mainCharacter = new Texture("player.png");
+        hitBox = new Rectangle(x,y,mainCharacter.getWidth(),mainCharacter.getHeight());
 
     }
 
@@ -43,11 +46,14 @@ public class MainCharacter {
         }
 
         velocity.scl(1/dt);
-
+        hitBox.setPosition(position.x,position.y);
     }
 
     public void move(){
         velocity.y = 350;
     }
 
+    public Rectangle getHitBox() {  // sends the dimentions of the maincharacters hitbox
+        return hitBox;
+    }
 }
