@@ -5,6 +5,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.dontdie.game.DontDie;
 
+import javax.sound.midi.Soundbank;
+
 public class MainCharacter {
     private static final int GRAVITY = -15;
     private Vector3 position;
@@ -28,7 +30,6 @@ public class MainCharacter {
         velocity = new Vector3(0,0,0);
         mainCharacter = new Texture("player.png");
         hitBox = new Rectangle(x,y,mainCharacter.getWidth(),mainCharacter.getHeight());
-
     }
 
     public void update(float dt){
@@ -56,4 +57,6 @@ public class MainCharacter {
     public Rectangle getHitBox() {  // sends the dimentions of the maincharacters hitbox
         return hitBox;
     }
+
+    public void dispose(){mainCharacter.dispose();}
 }

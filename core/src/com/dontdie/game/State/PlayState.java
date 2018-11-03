@@ -122,6 +122,11 @@ public class PlayState extends State {
 
     @Override
     public void dispose() {
-
+        backGround.dispose();
+        mainCharacter.dispose();
+        for( Projectile projectile : projectileList) {
+            mainCharacter.dispose();
+        }
+        System.out.println("Play State dispose");
     }
 }
