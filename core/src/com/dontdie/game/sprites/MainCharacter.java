@@ -1,5 +1,7 @@
 package com.dontdie.game.sprites;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
@@ -13,6 +15,7 @@ public class MainCharacter {
     private Vector3 velocity;
     private Texture mainCharacter;
     private Rectangle hitBox;
+    private Sound click;
 
     public Vector3 getPosition() {
         return position;
@@ -30,6 +33,7 @@ public class MainCharacter {
         velocity = new Vector3(0,0,0);
         mainCharacter = new Texture("player.png");
         hitBox = new Rectangle(x,y,mainCharacter.getWidth(),mainCharacter.getHeight());
+        click = Gdx.audio.newSound(Gdx.files.internal("button-3.mp3"));
     }
 
     public void update(float dt){
@@ -52,11 +56,15 @@ public class MainCharacter {
 
     public void move(){
         velocity.y = 350;
+        click.play();
     }
 
     public Rectangle getHitBox() {  // sends the dimentions of the maincharacters hitbox
         return hitBox;
     }
 
-    public void dispose(){mainCharacter.dispose();}
+    public void dispose(){
+        mainCharacter.dispose();
+        click.dispose();
+    }
 }
