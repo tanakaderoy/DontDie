@@ -18,7 +18,7 @@ public class PlayState extends State {
     private BossCharacter bossCharacter;
     private List<Projectile> projectileList;
     private List<Item> itemList;
-    private Texture backGround;
+    public Texture backGround;
     private float shootDelay =  2.5f;
     private float itemDelay = 10.0f;
     Controller controller;
@@ -34,7 +34,7 @@ public class PlayState extends State {
         projectileList = new ArrayList<Projectile>();
         //projectileList.add( new Projectile((int) bossCharacter.getPosition().x, (int) bossCharacter.getPosition().y));
         cam.setToOrtho(false, DontDie.WIDTH, DontDie.HEIGHT);
-        backGround = new Texture("Background-1.png");
+        backGround = new Texture("../android/assets/Background-1.png");
         controller = new Controller();
         projectile = new Projectile(mainCharacter.getPosition().x,mainCharacter.getPosition().y);
 

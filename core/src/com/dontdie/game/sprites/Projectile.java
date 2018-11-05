@@ -25,7 +25,7 @@ public class Projectile {
         start = x;
         position = new Vector3(x, y, 0);
         shoot_velo = new Vector3(-9, 0, 0);
-        pew = new Texture("fireball.png");
+        pew = new Texture("../android/assets/fireball.png");
         hitArea = new Rectangle(x,y, pew.getWidth(), pew.getHeight());
     }
 

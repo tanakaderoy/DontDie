@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.dontdie.game.DontDie;
 
 public class MenuState extends State {
-    private Texture background;
+    public Texture background;
     private Texture playBtn;
 
     public MenuState(GameStateManager gsm) {
