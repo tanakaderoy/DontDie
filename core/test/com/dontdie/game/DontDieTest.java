@@ -53,17 +53,17 @@ public class DontDieTest extends simpletest {
     @Test
    public void badlogicLogoFileExists() {
         assertTrue("This test will only pass when the badlogic.jpg file coming with a new project setup has not been deleted.", Gdx.files
-                .internal("../android/assets/badlogic.jpg").exists());
+                .internal("badlogic.jpg").exists());
     }
     @Test
     public void playerPNGFileExists() {
         assertTrue("This test will only pass when the player.png file  has not been deleted.", Gdx.files
-                .internal("../android/assets/player.png").exists());
+                .internal("player.png").exists());
     }
     @Test
     public void bossPNGFileExists() {
         assertTrue("This test will only pass when the FlameDemon Evolved.png file  has not been deleted.", Gdx.files
-                .internal("../android/assets/FlameDemon Evolved.png").exists());
+                .internal("FlameDemon Evolved.png").exists());
     }
     @Test
     public void oneEqualsOne() {

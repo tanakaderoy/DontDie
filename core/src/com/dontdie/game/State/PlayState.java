@@ -34,7 +34,7 @@ public class PlayState extends State {
         projectileList = new ArrayList<Projectile>();
         //projectileList.add( new Projectile((int) bossCharacter.getPosition().x, (int) bossCharacter.getPosition().y));
         cam.setToOrtho(false, DontDie.WIDTH, DontDie.HEIGHT);
-        backGround = new Texture("../android/assets/Background-1.png");
+        backGround = new Texture("Background-1.png");
         controller = new Controller();
         projectile = new Projectile(mainCharacter.getPosition().x,mainCharacter.getPosition().y);
 

@@ -26,7 +26,7 @@ public class MainCharacterTest extends GameTest {
     public void setUp() throws Exception {
         velocity = new Vector3(0,0,0);
         position = new Vector3(0,0,0);
-        mainCharacter = new Texture("../android/assets/player.png");
+        mainCharacter = new Texture("player.png");
         test = new MainCharacter(25,0);
     }
 
