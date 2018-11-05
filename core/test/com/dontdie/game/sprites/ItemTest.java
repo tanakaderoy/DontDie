@@ -18,7 +18,7 @@ public class ItemTest extends GameTest {
     @Before
     public void setUp() throws Exception {
         position = new Vector3(5,10,5);
-        Item = new Texture("../android/assets/coin.png");
+        Item = new Texture("coin.png");
     }
 
     @Test
