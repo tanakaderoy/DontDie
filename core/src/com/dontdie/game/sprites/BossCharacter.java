@@ -10,9 +10,9 @@ public class BossCharacter {
     private Vector3 position;
     private Vector3 goUp;
     private Vector3 goDown;
-    private boolean up;
+    public boolean up;
     private Texture bossCharacter;
-    private Rectangle hitBox;
+    public Rectangle hitBox;
 
 
     public Vector3 getPosition() {
