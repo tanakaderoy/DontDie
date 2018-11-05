@@ -24,6 +24,7 @@ public class simpletest {
             public void create() {
 
             }
+            //test
 
             @Override
             public void resize(int width, int height) {
