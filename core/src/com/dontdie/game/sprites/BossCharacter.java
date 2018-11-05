@@ -11,7 +11,7 @@ public class BossCharacter {
     private Vector3 goUp;
     private Vector3 goDown;
     public boolean up;
-    private Texture bossCharacter;
+    public Texture bossCharacter;
     public Rectangle hitBox;
 
 
