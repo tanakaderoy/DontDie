@@ -28,7 +28,7 @@ public class BossCharacter {
         goUp = new Vector3(0, Y_MOVEMENT, 0);
         goDown = new Vector3(0, -Y_MOVEMENT, 0);
         up = false;
-        bossCharacter = new Texture("FlameDemon Evolved.png");
+        bossCharacter = new Texture("../android/assets/FlameDemon Evolved.png");
         hitBox = new Rectangle(x,y,bossCharacter.getWidth(),bossCharacter.getHeight());
 
     }

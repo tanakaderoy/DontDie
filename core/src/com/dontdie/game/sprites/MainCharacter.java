@@ -31,7 +31,7 @@ public class MainCharacter {
 
         position = new Vector3(x, y,0);
         velocity = new Vector3(0,0,0);
-        mainCharacter = new Texture("player.png");
+        mainCharacter = new Texture("../android/assets/player.png");
         hitBox = new Rectangle(x,y,mainCharacter.getWidth(),mainCharacter.getHeight());
         click = Gdx.audio.newSound(Gdx.files.internal("button-3.mp3"));
     }
