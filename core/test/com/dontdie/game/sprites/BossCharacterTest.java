@@ -1,6 +1,7 @@
 package com.dontdie.game.sprites;
 
 import com.dontdie.game.DontDie;
+import com.dontdie.game.GameTest;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -8,7 +9,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BossCharacterTest {
+public class BossCharacterTest extends GameTest {
     BossCharacter bossCharacter;
     MainCharacter mainCharacter;
     @Before
@@ -34,7 +35,7 @@ public class BossCharacterTest {
 
     @Test
     public void up(){
-        Assert.assertEquals(true, bossCharacter.up);
+        Assert.assertFalse( bossCharacter.up);
     }
 
     @Test

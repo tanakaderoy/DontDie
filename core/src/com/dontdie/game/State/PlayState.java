@@ -66,7 +66,7 @@ public class PlayState extends State {
                 projectileList.remove(i);
             }
             if(projectile.collides(mainCharacter.getHitBox())){
-                gsm.set(new PlayState(gsm));
+                gsm.set(new DeathState(gsm));
             }
         }
 
