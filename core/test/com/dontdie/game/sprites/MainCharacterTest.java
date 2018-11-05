@@ -1,9 +1,11 @@
 package com.dontdie.game.sprites;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.dontdie.game.DontDie;
 import com.dontdie.game.GameTest;
 
 import org.junit.Assert;
@@ -18,6 +20,7 @@ public class MainCharacterTest extends GameTest {
     private Texture mainCharacter;
     private Rectangle hitBox;
     private MainCharacter test;
+    Sound click;
 
     @Before
     public void setUp() throws Exception {
@@ -39,8 +42,16 @@ public class MainCharacterTest extends GameTest {
     }
 
     @Test
-    public void update() {
+    public void getPositionX(){
+        Assert.assertEquals(25,test.getPosition().x, .003);
     }
+
+    @Test
+    public void getPositionY(){
+        Assert.assertEquals(0,test.getPosition().y, .003);
+    }
+
+
 
     @Test
     public void move() {
@@ -58,6 +69,16 @@ public class MainCharacterTest extends GameTest {
         Rectangle expected = new Rectangle(25,0,mainCharacter.getWidth(),mainCharacter.getHeight());
         Rectangle rec = test.getHitBox();
         Assert.assertEquals(expected,rec);
+
+    }
+    @Test
+    public void getSound() {
+        assertNull("true",click);
+        click = Gdx.audio.newSound(Gdx.files.internal("../android/assets/button-3.mp3"));
+        assertNotNull(click);
+
+
+
 
     }
 
