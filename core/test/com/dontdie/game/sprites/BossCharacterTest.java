@@ -15,27 +15,27 @@ public class BossCharacterTest extends GameTest {
     @Before
     public void initialize(){
         bossCharacter = new BossCharacter(DontDie.WIDTH-90, 0);
-        mainCharacter = new MainCharacter(25, 100);
+        mainCharacter = new MainCharacter(25, 0);
     }
 
     @Test
     public void getPositionX(){
-        Assert.assertEquals(DontDie.WIDTH-90,bossCharacter.getPosition().x);
+        Assert.assertEquals(DontDie.WIDTH-90,bossCharacter.getPosition().x, .003);
     }
 
     @Test
     public void getPositionY(){
-        Assert.assertEquals(0,bossCharacter.getPosition().y);
+        Assert.assertEquals(0,bossCharacter.getPosition().y, .003);
     }
 
     @Test
     public void getBossCharacter(){
-        Assert.assertEquals(bossCharacter ,bossCharacter.getBossCharacter());
+        Assert.assertEquals(bossCharacter.bossCharacter ,bossCharacter.getBossCharacter());
     }
 
     @Test
     public void up(){
-        Assert.assertFalse( bossCharacter.up);
+        Assert.assertEquals(false, bossCharacter.up);
     }
 
     @Test
