@@ -28,7 +28,7 @@ public class DontDie extends ApplicationAdapter {
 		music.setLooping(true);
 		music.setVolume(0.1f);
 		music.play();
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(0, 0, 1, 1);
 		gsm.push(new MenuState(gsm));
 	}
 

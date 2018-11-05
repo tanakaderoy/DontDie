@@ -44,6 +44,7 @@ public class PlayState extends State {
     protected void handleInput() {
         if(Gdx.input.justTouched()){
             mainCharacter.move();
+            System.out.println(mainCharacter.getPosition());
         }/*
         if(controller.isUpPressed()) {
             mainCharacter.move();

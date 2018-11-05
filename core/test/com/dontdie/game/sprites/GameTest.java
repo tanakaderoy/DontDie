@@ -15,7 +15,7 @@ import org.mockito.Mockito;
 
 import static org.junit.Assert.assertTrue;
 
-public class simpletest {
+public class GameTest {
     private static Application application;
     @BeforeClass
     public static void init(){
@@ -24,7 +24,6 @@ public class simpletest {
             public void create() {
 
             }
-            //test
 
             @Override
             public void resize(int width, int height) {
