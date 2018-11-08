@@ -8,12 +8,14 @@ import com.dontdie.game.DontDie;
 public class MenuState extends State {
     public Texture background;
     private Texture playBtn;
+    private Texture game_title;
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(false, DontDie.WIDTH, DontDie.HEIGHT);
         background = new Texture("Background-1.png");
         playBtn = new Texture("play.png");
+        game_title = new Texture("title.png");
     }
 
     @Override
@@ -34,7 +36,8 @@ public class MenuState extends State {
 
         sb.begin();
         sb.draw(background, 0,0);
-        sb.draw(playBtn, cam.position.x - playBtn.getWidth()/2,cam.position.y);
+        sb.draw(game_title, cam.position.x - game_title.getWidth()/2, DontDie.HEIGHT - 250);
+        sb.draw(playBtn, cam.position.x - playBtn.getWidth()/2, DontDie.HEIGHT/2);
         sb.end();
 
     }
