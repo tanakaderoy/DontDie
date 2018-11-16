@@ -15,7 +15,8 @@ public class MainCharacter {
     private Vector3 velocity;
     private Texture mainCharacter;
     private Rectangle hitBox;
-    private Sound click;
+    public Sound click;
+    public String textureName;
 
     public Vector3 getPosition() {
         return position;
@@ -26,16 +27,16 @@ public class MainCharacter {
         return mainCharacter;
     }
 
-    public MainCharacter(int x, int y){
+    public MainCharacter(int x, int y, String texture){
 
 
         position = new Vector3(x, y,0);
         velocity = new Vector3(0,0,0);
-        mainCharacter = new Texture("player.png");
+        textureName = texture;
+        mainCharacter = new Texture(texture);
         hitBox = new Rectangle(x,y,mainCharacter.getWidth(),mainCharacter.getHeight());
         click = Gdx.audio.newSound(Gdx.files.internal("button-3.mp3"));
     }
-
     public void update(float dt){
         if(position.y >0) {
             velocity.add(0, GRAVITY, 0);
@@ -46,8 +47,8 @@ public class MainCharacter {
         if(position.y<0){
             position.y=0;
         }
-        if (position.y > DontDie.HEIGHT - 32){
-            position.y = DontDie.HEIGHT - 32;
+        if (position.y > DontDie.HEIGHT - 32 - 40){
+            position.y = DontDie.HEIGHT - 32 - 40;
         }
 
         velocity.scl(1/dt);

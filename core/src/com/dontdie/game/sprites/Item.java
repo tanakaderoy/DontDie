@@ -29,7 +29,7 @@ public class Item {
     }
 
     public boolean update(){
-        if (position.x < -5){
+        if (position.x < -itemTexture.getWidth()){
             return false;
         }
         position.add(itemMovement);

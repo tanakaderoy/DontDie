@@ -10,23 +10,44 @@ import com.dontdie.game.State.GameStateManager;
 import com.dontdie.game.State.MenuState;
 
 public class DontDie extends ApplicationAdapter {
-	public static final int WIDTH = 480;
-	public static final int HEIGHT = 800;
+	public static final int WIDTH = 800;
+	public static final int HEIGHT = 480;
 
 	public static final String TITLE = "Don't Die";
+	public static float bestTime;
+	public static float yourTime;
+	public static float appVolume = 0.1f;
+	public static String backGround;
 	private GameStateManager gsm;
 	public static SpriteBatch batch;
 
-	private Music music;
+	public static Music music;
+
+	public static void setBackground(String background){
+		backGround = background;
+	}
+
+
+	public static void setBestTime(float besttime){
+		bestTime = besttime;
+	}
+
+	public static void setYourTime(float yourtime) {
+		yourTime = yourtime;
+	}
+
 
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		gsm = new GameStateManager();
+		yourTime = 0;
+		bestTime = 0;
+		backGround = "Background-1.png";
 		music = Gdx.audio.newMusic(Gdx.files.internal("Music.mp3"));
 		music.setLooping(true);
-		music.setVolume(0.1f);
+		music.setVolume(appVolume);
 		music.play();
 		Gdx.gl.glClearColor(0, 0, 1, 1);
 		gsm.push(new MenuState(gsm));

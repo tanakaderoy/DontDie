@@ -12,22 +12,19 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.dontdie.game.DontDie;
 
-public class Controller {
-    Viewport viewport;
-    Stage stage;
+public class GameButton {
     boolean upPressed, downPressed, leftPressed, rightPressed;
     OrthographicCamera cam;
-    public Controller(){
-        cam = new OrthographicCamera();
-        viewport = new FitViewport(800,480, cam);
-        stage = new Stage(viewport, DontDie.batch);
+    public Texture buttonTexture;
+    public Image upImg;
+
+    public GameButton(float x, float y, Texture texture, Stage stage){
+       // cam = new OrthographicCamera();
+
         Gdx.input.setInputProcessor(stage);
-
-        Table table = new Table();
-        table.left().bottom();
-
-        Image upImg = new Image(new Texture("flatDark25.png"));
-        upImg.setSize(50,50);
+        buttonTexture = texture;
+        upImg = new Image(texture);
+        //upImg.setSize(50,50);
         upImg.addListener(new InputListener(){
 
             @Override
@@ -38,24 +35,22 @@ public class Controller {
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                downPressed = false;
+                upPressed = false;
             }
         });
-        table.add();
-        table.add(upImg).size(upImg.getWidth(),upImg.getHeight());
-        table.add();
-        table.row().pad(5,5,5,5);
-        stage.addActor(table);
+
+        upImg.setPosition(x,y);
+        stage.addActor(upImg);
 
     }
-    public void draw(){
+    public void draw(Stage stage){
         stage.draw();
     }
 
     public boolean isUpPressed() {
         return upPressed;
     }
-    public void resize(int width, int height){
+    public void resize(int width, int height, FitViewport viewport){
         viewport.update(width,height);
     }
 }
