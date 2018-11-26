@@ -4,8 +4,10 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.dontdie.game.State.GameStateManager;
 import com.dontdie.game.State.MenuState;
 
@@ -19,7 +21,9 @@ public class DontDie extends ApplicationAdapter {
 	public static float appVolume = 0.1f;
 	public static String backGround;
 	private GameStateManager gsm;
-	public static SpriteBatch batch;
+	private SpriteBatch batch;
+	public static FitViewport viewport;
+	public static OrthographicCamera cam;
 
 	public static Music music;
 
@@ -36,12 +40,23 @@ public class DontDie extends ApplicationAdapter {
 		yourTime = yourtime;
 	}
 
+	private static DontDie instance = null;
+
+	public static SpriteBatch getBatch() {
+		return instance.batch;
+	}
 
 
 	@Override
 	public void create () {
+		instance = this;
 		batch = new SpriteBatch();
 		gsm = new GameStateManager();
+
+		cam = new OrthographicCamera();
+		cam.setToOrtho(false, WIDTH, HEIGHT);
+		viewport = new FitViewport(DontDie.WIDTH, DontDie.HEIGHT,cam);
+
 		yourTime = 0;
 		bestTime = 0;
 		backGround = "Background-1.png";

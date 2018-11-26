@@ -37,6 +37,7 @@ public class PlayState extends State {
     private float aliveSecs = 0.01f;
     private float bossShootDelay =  2.5f;
     private float mainShootDelay = 0f;
+    private float pauseDelay = 0.000001f;
     private float coinDelay = 2.5f;
     private float ammoDelay = 2.5f;
     private float jumpDelay = 0f;
@@ -45,17 +46,14 @@ public class PlayState extends State {
     private float bossHealth = 100;
     private GameButton shootButton;
     private GameButton jumpButton;
-    private GameButton pauseButton;
+    public static GameButton pauseButton;
     BossCharacterProjectile bossProjectile;
     MainCharacterProjectile mainProjectile;
     private BitmapFont font;
-    private FitViewport viewport;
-    private Stage stage;
 
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
-        cam.setToOrtho(false, DontDie.WIDTH, DontDie.HEIGHT);
 
         itemList = new ArrayList<Item>();
         //itemList.add(new Item(DontDie.WIDTH, MathUtils.random(0 , DontDie.HEIGHT - 10), "coin.png"));
@@ -84,8 +82,7 @@ public class PlayState extends State {
         bossProjectile = new BossCharacterProjectile(mainCharacter.getPosition().x,mainCharacter.getPosition().y);
         mainProjectile = new MainCharacterProjectile(mainCharacter.getPosition().x, mainCharacter.getPosition().y);
 
-        viewport = new FitViewport(800,480, cam);
-        stage = new Stage(viewport, DontDie.batch);
+
         jumpButton = new GameButton(0,0,jumpTexture,stage);
         shootButton = new GameButton(DontDie.WIDTH - shootTexture.getWidth(), 0, shootTexture, stage);
         pauseButton = new GameButton(DontDie.WIDTH - pauseTexture.getWidth(), DontDie.HEIGHT - 100, pauseTexture, stage);
@@ -96,9 +93,6 @@ public class PlayState extends State {
     protected void handleInput() {
 
 
-
-
-
     }
 
 
@@ -107,10 +101,17 @@ public class PlayState extends State {
         handleInput();
         //MAIN CHARACTER JUMP
         jumpDelay -= dt;
-        if(pauseButton.isUpPressed()){
-            gsm.set(new PauseState(gsm));
-            }
-        if(jumpButton.isUpPressed() && jumpDelay < 0.0f) {
+        pauseDelay -= dt;
+        if(pauseButton.isPressed() ){
+
+            gsm.push(new PauseState(gsm));
+            System.out.println("PauseState pushed");
+            pauseButton.unpress();
+            return;
+            //pauseButton.upPressed = false;
+            //pauseDelay = 1f;
+        }
+        if(jumpButton.isPressed() && jumpDelay < 0.0f) {
             mainCharacter.move();
             jumpDelay = 0.1f;
         }
@@ -153,7 +154,7 @@ public class PlayState extends State {
             }
         }
         mainShootDelay -= dt;
-        if(shootButton.isUpPressed() && ammoCount > 0 && mainShootDelay < 0.0f){
+        if(shootButton.isPressed() && ammoCount > 0 && mainShootDelay < 0.0f){
             MainProjectileList.add(new MainCharacterProjectile((int) mainCharacter.getPosition().x, (int) mainCharacter.getPosition().y + mainCharacter.getMainCharacter().getHeight() / 2));
             ammoCount -= 1;
             mainShootDelay = 1.0f;
@@ -224,10 +225,10 @@ public class PlayState extends State {
     public void render(SpriteBatch spriteBatch) {
         Gdx.gl.glClearColor(1,1,1,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        spriteBatch.setProjectionMatrix(cam.combined);
+        spriteBatch.setProjectionMatrix(DontDie.cam.combined);
         spriteBatch.begin();
-        spriteBatch.draw(backGround,cam.position.x - (cam.viewportWidth/2), 0);
-        spriteBatch.draw(statContainer, cam.position.x - statContainer.getWidth()/2,0,statContainer.getWidth(), 20);
+        spriteBatch.draw(backGround,DontDie.cam.position.x - (DontDie.cam.viewportWidth/2), 0);
+        spriteBatch.draw(statContainer, DontDie.cam.position.x - statContainer.getWidth()/2,0,statContainer.getWidth(), 20);
         spriteBatch.draw(statContainer, 0 ,DontDie.HEIGHT-40, DontDie.WIDTH,40);
         spriteBatch.draw(mainCharacter.getMainCharacter(), mainCharacter.getPosition().x, mainCharacter.getPosition().y);
         if (BossList.size() > 0) {
@@ -257,6 +258,7 @@ public class PlayState extends State {
         spriteBatch.end();
         shootButton.draw(stage);
         jumpButton.draw(stage);
+        pauseButton.draw(stage);
 
     }
 

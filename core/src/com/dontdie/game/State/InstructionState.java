@@ -33,12 +33,12 @@ public class InstructionState extends State {
         private GameButton jumpButton;
 
         private BitmapFont font;
-        private FitViewport viewport;
-        private Stage stage;
+
+
 
     public InstructionState(GameStateManager gsm){
         super(gsm);
-        cam.setToOrtho(false, DontDie.WIDTH, DontDie.HEIGHT);
+
         backGround = new Texture(DontDie.backGround);
         instructions = new Texture("instructions.png");
 
@@ -57,8 +57,7 @@ public class InstructionState extends State {
         bossCharacter = new BossCharacter(DontDie.WIDTH - shootTexture.getWidth()-60, 0, "FlameDemon Evolved.png");
 
 
-        viewport = new FitViewport(800,480, cam);
-        stage = new Stage(viewport, DontDie.batch);
+
         jumpButton = new GameButton(0,0,jumpTexture,stage);
         shootButton = new GameButton(DontDie.WIDTH - shootTexture.getWidth(), 0, shootTexture, stage);
     }
@@ -76,10 +75,10 @@ public class InstructionState extends State {
     public void render(SpriteBatch spriteBatch){
         Gdx.gl.glClearColor(1,1,1,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        spriteBatch.setProjectionMatrix(cam.combined);
+        spriteBatch.setProjectionMatrix(DontDie.cam.combined);
         spriteBatch.begin();
-        spriteBatch.draw(backGround,cam.position.x - (cam.viewportWidth/2), 0);
-        spriteBatch.draw(statContainer, cam.position.x - statContainer.getWidth()/2,0,statContainer.getWidth(), 20);
+        spriteBatch.draw(backGround,DontDie.cam.position.x - (DontDie.cam.viewportWidth/2), 0);
+        spriteBatch.draw(statContainer, DontDie.cam.position.x - statContainer.getWidth()/2,0,statContainer.getWidth(), 20);
         spriteBatch.draw(statContainer, 0 ,DontDie.HEIGHT-40, DontDie.WIDTH,40);
         spriteBatch.draw(mainCharacter.getMainCharacter(), mainCharacter.getPosition().x, mainCharacter.getPosition().y);
         spriteBatch.draw(bossCharacter.getBossCharacter(), bossCharacter.getPosition().x, bossCharacter.getPosition().y);
@@ -88,7 +87,7 @@ public class InstructionState extends State {
         font.draw(spriteBatch, "Ammo: " + String.valueOf(ammoCount), 10, DontDie.HEIGHT-7);
         font.draw(spriteBatch, "Time Alive: " + String.format("%,.2f",DontDie.yourTime) + " seconds", 300, DontDie.HEIGHT-10);
 
-        spriteBatch.draw(instructions,cam.position.x - instructions.getWidth()/2,  0, instructions.getWidth(), DontDie.HEIGHT);
+        spriteBatch.draw(instructions,DontDie.cam.position.x - instructions.getWidth()/2,  0, instructions.getWidth(), DontDie.HEIGHT);
         spriteBatch.end();
         shootButton.draw(stage);
         jumpButton.draw(stage);

@@ -16,13 +16,11 @@ public class SettingsState extends State{
     //private GameButton soundOnButton;
     private GameButton soundButton;
     private GameButton menuButton;
-    private Stage stage;
+
     private FitViewport viewport;
     public SettingsState(GameStateManager gsm){
         super(gsm);
-        cam.setToOrtho(false, DontDie.WIDTH,DontDie.HEIGHT);
-        viewport = new FitViewport(DontDie.WIDTH, DontDie.HEIGHT,cam);
-        stage = new Stage(viewport,DontDie.batch);
+
         soundOnTexture = new Texture("soundOn.png");
         soundOffTexture = new Texture("soundOff.png");
         settingsMenu = new Texture("settingsMenu.png");
@@ -30,25 +28,25 @@ public class SettingsState extends State{
         background = new Texture(DontDie.backGround);
         soundButtonTexture = soundOffTexture;
         //soundOnButton = new GameButton(0,0,soundOnTexture,stage);
-        soundButton = new GameButton(cam.position.x - soundOnTexture.getWidth()/2,cam.position.y - soundOnTexture.getHeight()/2 - 50,soundButtonTexture,stage);
-        menuButton = new GameButton(cam.position.x - menuTexture.getWidth()/2, 10, menuTexture, stage);
+        soundButton = new GameButton(DontDie.cam.position.x - soundOnTexture.getWidth()/2,DontDie.cam.position.y - soundOnTexture.getHeight()/2 - 50,soundButtonTexture,stage);
+        menuButton = new GameButton(DontDie.cam.position.x - menuTexture.getWidth()/2, 10, menuTexture, stage);
 
     }
 
     @Override
     public void handleInput(){
-        if(menuButton.isUpPressed()){
+        if(menuButton.isPressed()){
             gsm.set(new MenuState(gsm));
-        }else if (soundButton.isUpPressed() && soundButtonTexture == soundOffTexture){
+        }else if (soundButton.isPressed() && soundButtonTexture == soundOffTexture){
             System.out.println("MUTE SOUND!!!!!!!!!");
             DontDie.music.setVolume(0.0f);
             soundButtonTexture = soundOnTexture;
-            soundButton = new GameButton(cam.position.x - soundOnTexture.getWidth()/2,cam.position.y - soundOnTexture.getHeight()/2-50,soundButtonTexture,stage);
-        } else if (soundButton.isUpPressed() && soundButtonTexture == soundOnTexture) {
+            soundButton = new GameButton(DontDie.cam.position.x - soundOnTexture.getWidth()/2,DontDie.cam.position.y - soundOnTexture.getHeight()/2-50,soundButtonTexture,stage);
+        } else if (soundButton.isPressed() && soundButtonTexture == soundOnTexture) {
             System.out.println("SOUND ON!!!!!!!!!");
             DontDie.music.setVolume(0.1f);
             soundButtonTexture = soundOffTexture;
-            soundButton = new GameButton(cam.position.x - soundOnTexture.getWidth()/2,cam.position.y - soundOnTexture.getHeight()/2-50,soundButtonTexture,stage);
+            soundButton = new GameButton(DontDie.cam.position.x - soundOnTexture.getWidth()/2,DontDie.cam.position.y - soundOnTexture.getHeight()/2-50,soundButtonTexture,stage);
 
         }
     }
@@ -60,10 +58,10 @@ public class SettingsState extends State{
 
     @Override
     public void render(SpriteBatch spriteBatch){
-        spriteBatch.setProjectionMatrix(cam.combined);
+        spriteBatch.setProjectionMatrix(DontDie.cam.combined);
         spriteBatch.begin();
         spriteBatch.draw(background,0,0);
-        spriteBatch.draw(settingsMenu,cam.position.x - settingsMenu.getWidth()/2, DontDie.HEIGHT-200);
+        spriteBatch.draw(settingsMenu,DontDie.cam.position.x - settingsMenu.getWidth()/2, DontDie.HEIGHT-200);
         spriteBatch.end();
         menuButton.draw(stage);
         soundButton.draw(stage);

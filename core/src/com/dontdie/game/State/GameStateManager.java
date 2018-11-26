@@ -14,16 +14,20 @@ public class GameStateManager {
     }
 
     public void push(State state){
+        state.setInput();
         states.push(state);
 
     }
 
     public void pop(){
         states.pop().dispose();
+        if( states.size() > 0 )
+            states.peek().setInput();
     }
 
     public void set(State state){
         states.pop().dispose();
+        state.setInput();
         states.push(state);
     }
 

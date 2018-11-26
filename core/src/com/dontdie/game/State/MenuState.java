@@ -14,19 +14,17 @@ public class MenuState extends State {
     private Texture game_title;
     private GameButton playBtn;
     private GameButton settingsBtn;
-    private Stage stage;
-    private FitViewport viewport;
+
+
     //private GameButton playBtn;
 
     public MenuState(GameStateManager gsm) {
         super(gsm);
-        cam.setToOrtho(false, DontDie.WIDTH, DontDie.HEIGHT);
-        viewport = new FitViewport(800,480, cam);
-        stage = new Stage(viewport, DontDie.batch);
+
         playTexture = new Texture("play.png");
         settingsTexture = new Texture("settings.png");
-        playBtn = new GameButton(cam.position.x - playTexture.getWidth()/2,DontDie.HEIGHT/2-50, playTexture, stage);
-        settingsBtn = new GameButton(cam.position.x - settingsTexture.getWidth()/2,DontDie.HEIGHT/2-150, settingsTexture, stage);
+        playBtn = new GameButton(DontDie.cam.position.x - playTexture.getWidth()/2,DontDie.HEIGHT/2-50, playTexture, stage);
+        settingsBtn = new GameButton(DontDie.cam.position.x - settingsTexture.getWidth()/2,DontDie.HEIGHT/2-150, settingsTexture, stage);
         background = new Texture(DontDie.backGround);
         game_title = new Texture("title.png");
     }
@@ -36,10 +34,10 @@ public class MenuState extends State {
        /* if(Gdx.input.justTouched()){
             gsm.set(new InstructionState(gsm));
         }*/
-        if(playBtn.isUpPressed()) {
+        if(playBtn.isPressed()) {
             gsm.set(new InstructionState(gsm));
         }
-        else if (settingsBtn.isUpPressed()){
+        else if (settingsBtn.isPressed()){
             gsm.set(new SettingsState(gsm));
         }
     }
@@ -51,11 +49,11 @@ public class MenuState extends State {
 
     @Override
     public void render(SpriteBatch sb) {
-        sb.setProjectionMatrix(cam.combined);
+        sb.setProjectionMatrix(DontDie.cam.combined);
 
         sb.begin();
         sb.draw(background, 0,0);
-        sb.draw(game_title, cam.position.x - game_title.getWidth()/2, DontDie.HEIGHT - 200);
+        sb.draw(game_title, DontDie.cam.position.x - game_title.getWidth()/2, DontDie.HEIGHT - 200);
        // sb.draw(PlayBtn, cam.position.x - playBtn.imgTexture.getWidth()/2, DontDie.HEIGHT/2-50);
        // sb.draw(settingsBtn, cam.position.x - settingsBtn.getWidth()/2, DontDie.HEIGHT/2 - 150);
         sb.end();

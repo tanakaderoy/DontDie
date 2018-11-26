@@ -1,6 +1,7 @@
 package com.dontdie.game.State;
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -16,21 +17,18 @@ public class PauseState extends State{
     private GameButton menuBtn;
     private GameButton restartBtn;
     private GameButton resumeBtn;
-    private Stage stage;
-    private FitViewport viewport;
+
 
 
     public PauseState(GameStateManager gsm) {
         super(gsm);
-        cam.setToOrtho(false, DontDie.WIDTH, DontDie.HEIGHT);
-        viewport = new FitViewport(800,480, cam);
-        stage = new Stage(viewport, DontDie.batch);
+
         menuTexture = new Texture("play.png");
         restartTexture = new Texture("retry.png");
         resumeTexture = new Texture("settings.png");
-        menuBtn = new GameButton(cam.position.x - menuTexture.getWidth()/2,DontDie.HEIGHT/2-50, menuTexture, stage);
-        restartBtn = new GameButton(cam.position.x - restartTexture.getWidth()/2,DontDie.HEIGHT/2-150, restartTexture, stage);
-        resumeBtn = new GameButton(cam.position.x - resumeTexture.getWidth()/2,DontDie.HEIGHT/2-250, resumeTexture, stage);
+        menuBtn = new GameButton(DontDie.cam.position.x - menuTexture.getWidth()/2,DontDie.HEIGHT/2-50, menuTexture, stage);
+        restartBtn = new GameButton(DontDie.cam.position.x - restartTexture.getWidth()/2,DontDie.HEIGHT/2-150, restartTexture, stage);
+        resumeBtn = new GameButton(DontDie.cam.position.x - resumeTexture.getWidth()/2,DontDie.HEIGHT/2-250, resumeTexture, stage);
         background = new Texture(DontDie.backGround);
         gamepause_title = new Texture("title.png");
     }
@@ -38,14 +36,15 @@ public class PauseState extends State{
 
     @Override
     public void handleInput() {
-        if(menuBtn.isUpPressed()) {
+        if(menuBtn.isPressed()) {
             gsm.set(new MenuState(gsm));
         }
-        else if (restartBtn.isUpPressed()){
+        else if (restartBtn.isPressed()){
             gsm.set(new PlayState(gsm));
         }
-        else if (resumeBtn.isUpPressed()){
-            gsm.push(new PlayState(gsm));
+        else if (resumeBtn.isPressed()){
+            System.out.println("PauseState popped");
+            gsm.pop();
         }
     }
 
@@ -56,11 +55,11 @@ public class PauseState extends State{
 
     @Override
     public void render(SpriteBatch sb) {
-        sb.setProjectionMatrix(cam.combined);
+        sb.setProjectionMatrix(DontDie.cam.combined);
         sb.begin();
-        sb.draw(background,cam.position.x - (cam.viewportWidth/2), 0);
+        sb.draw(background,DontDie.cam.position.x - (DontDie.cam.viewportWidth/2), 0);
         sb.draw(background, 0,0);
-        sb.draw(gamepause_title, cam.position.x - gamepause_title.getWidth()/2, DontDie.HEIGHT - 200);
+        sb.draw(gamepause_title, DontDie.cam.position.x - gamepause_title.getWidth()/2, DontDie.HEIGHT - 200);
         sb.end();
         menuBtn.draw(stage);
         restartBtn.draw(stage);

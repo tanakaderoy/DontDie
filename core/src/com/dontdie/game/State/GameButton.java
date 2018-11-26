@@ -13,15 +13,14 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.dontdie.game.DontDie;
 
 public class GameButton {
-    boolean upPressed, downPressed, leftPressed, rightPressed;
-    OrthographicCamera cam;
+    public boolean pressed=false;
     public Texture buttonTexture;
     public Image upImg;
 
     public GameButton(float x, float y, Texture texture, Stage stage){
        // cam = new OrthographicCamera();
 
-        Gdx.input.setInputProcessor(stage);
+
         buttonTexture = texture;
         upImg = new Image(texture);
         //upImg.setSize(50,50);
@@ -29,13 +28,14 @@ public class GameButton {
 
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                upPressed = true;
+                pressed = true;
                 return true;
             }
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                upPressed = false;
+
+                pressed = false;
             }
         });
 
@@ -47,9 +47,9 @@ public class GameButton {
         stage.draw();
     }
 
-    public boolean isUpPressed() {
-        return upPressed;
+    public boolean isPressed() {return pressed;
     }
+    public void unpress() { pressed = false; }
     public void resize(int width, int height, FitViewport viewport){
         viewport.update(width,height);
     }
