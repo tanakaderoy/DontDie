@@ -3,15 +3,15 @@ package com.dontdie.game.State;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.MathUtils;
 import com.dontdie.game.DontDie;
-import com.dontdie.game.sprites.MainCharacter;
 import com.dontdie.game.sprites.BossCharacter;
 import com.dontdie.game.sprites.BossCharacterProjectile;
 import com.dontdie.game.sprites.Item;
+import com.dontdie.game.sprites.MainCharacter;
 import com.dontdie.game.sprites.MainCharacterProjectile;
 
 import java.util.ArrayList;
