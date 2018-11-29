@@ -95,7 +95,7 @@ project(":ios") {
 project(":core") {
     apply plugin: "java"
     sourceSets{
-        test{java.srcDirs = ['test']}
+        test{java.srcDirs = ['test/']}
     }
 
 
@@ -109,7 +109,7 @@ project(":core") {
         
 
         // These are new!
-        testCompile "junit:junit:4.12"
+        testCompile "junit:junit:+"
         testCompile "org.mockito:mockito-core:2.2.7"
 
         testCompile 'org.hamcrest:hamcrest-library:1.3'
