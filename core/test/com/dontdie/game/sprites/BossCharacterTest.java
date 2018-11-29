@@ -20,8 +20,8 @@ public class BossCharacterTest extends GameTest {
     @Before
     public void initialize(){
         width = DontDie.WIDTH;
-        bossCharacter = new BossCharacter(width-90, 0,"FlameDemon Evolved.png");
-        mainCharacter = new MainCharacter(25, 0,"player.png");
+        bossCharacter = new BossCharacter(width-90, 0,"FlameDemon Evolved.png",100);
+        mainCharacter = new MainCharacter(25, 0);
     }
 
     @Test

@@ -29,7 +29,7 @@ public class MainCharacterTest extends GameTest {
         velocity = new Vector3(0,0,0);
         position = new Vector3(0,0,0);
         mainCharacter = new Texture("player.png");
-        test = new MainCharacter(25,0,"player.png");
+        test = new MainCharacter(25,0);
     }
 
     @Test
@@ -69,7 +69,7 @@ public class MainCharacterTest extends GameTest {
 
     @Test
     public void getHitBox() {
-        Rectangle expected = new Rectangle(25,0,mainCharacter.getWidth(),mainCharacter.getHeight());
+        Rectangle expected = new Rectangle(29,0,mainCharacter.getWidth()-8,mainCharacter.getHeight()-4);
         Rectangle rec = test.getHitBox();
         Assert.assertEquals(expected,rec);
 
