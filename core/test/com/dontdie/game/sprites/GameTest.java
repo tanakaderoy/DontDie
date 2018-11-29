@@ -1,4 +1,4 @@
-package com.dontdie.game;
+package com.dontdie.game.sprites;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationListener;

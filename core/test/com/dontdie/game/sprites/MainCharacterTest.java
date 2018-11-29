@@ -6,7 +6,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.dontdie.game.DontDie;
-import com.dontdie.game.GameTest;
+
+import com.dontdie.game.sprites.GameTest;
+import com.dontdie.game.sprites.MainCharacter;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -27,7 +29,7 @@ public class MainCharacterTest extends GameTest {
         velocity = new Vector3(0,0,0);
         position = new Vector3(0,0,0);
         mainCharacter = new Texture("player.png");
-        test = new MainCharacter(25,0);
+        test = new MainCharacter(25,0,"player.png");
     }
 
     @Test
@@ -63,6 +65,7 @@ public class MainCharacterTest extends GameTest {
         assertEquals("Wrong y velocity",350,velocity.y,.003);
 
     }
+
 
     @Test
     public void getHitBox() {
