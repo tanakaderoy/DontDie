@@ -2,7 +2,7 @@ package com.dontdie.game.sprites;
 
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
-import com.dontdie.game.GameTest;
+import com.dontdie.game.sprites.MainCharacterProjectile;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,11 +11,12 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ProjectileTest extends GameTest {
-    Projectile test;
+    MainCharacterProjectile test;
 
     @Before
     public void setUp() throws Exception {
-        test = new Projectile(25,0);
+
+        test = new MainCharacterProjectile(25,0);
 
     }
 

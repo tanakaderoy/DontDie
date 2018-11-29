@@ -1,7 +1,10 @@
 package com.dontdie.game.sprites;
 
 import com.dontdie.game.DontDie;
-import com.dontdie.game.GameTest;
+
+import com.dontdie.game.sprites.BossCharacter;
+import com.dontdie.game.sprites.GameTest;
+import com.dontdie.game.sprites.MainCharacter;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,11 +15,13 @@ import static org.junit.Assert.*;
 public class BossCharacterTest extends GameTest {
     BossCharacter bossCharacter;
     MainCharacter mainCharacter;
+    private int width;
 
     @Before
     public void initialize(){
-        bossCharacter = new BossCharacter(DontDie.WIDTH-90, 0);
-        mainCharacter = new MainCharacter(25, 0);
+        width = DontDie.WIDTH;
+        bossCharacter = new BossCharacter(width-90, 0,"FlameDemon Evolved.png");
+        mainCharacter = new MainCharacter(25, 0,"player.png");
     }
 
     @Test
