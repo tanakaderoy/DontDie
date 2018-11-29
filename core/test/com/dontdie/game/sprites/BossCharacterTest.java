@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 public class BossCharacterTest extends GameTest {
     BossCharacter bossCharacter;
     MainCharacter mainCharacter;
+
     @Before
     public void initialize(){
         bossCharacter = new BossCharacter(DontDie.WIDTH-90, 0);
