@@ -7,34 +7,43 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.dontdie.game.DontDie;
 
-import javax.sound.midi.Soundbank;
 
 public class MainCharacter {
     private static final int GRAVITY = -15;
     private Vector3 position;
     private Vector3 velocity;
     private Texture mainCharacter;
+    private Texture mainCharacterShield;
     private Rectangle hitBox;
     public Sound click;
-    public String textureName;
+    public String textureName = "player.png";
 
     public Vector3 getPosition() {
         return position;
     }
 
-
-    public Texture getMainCharacter() {
-        return mainCharacter;
+    public void setMainCharacterTexture(String setTexture){
+        textureName = setTexture;
     }
 
-    public MainCharacter(int x, int y, String texture){
+
+    public Texture getMainCharacter() {
+        if (textureName == "player.png") {
+            return mainCharacter;
+        }else{
+            return mainCharacterShield;
+        }
+    }
+
+    public MainCharacter(int x, int y){
 
 
         position = new Vector3(x, y,0);
         velocity = new Vector3(0,0,0);
-        textureName = texture;
-        mainCharacter = new Texture(texture);
-        hitBox = new Rectangle(x,y,mainCharacter.getWidth(),mainCharacter.getHeight());
+        //textureName = texture;
+        mainCharacter = new Texture("player.png");
+        mainCharacterShield = new Texture("playerShield.png");
+        hitBox = new Rectangle(x+4,y,mainCharacter.getWidth()-8,mainCharacter.getHeight()-4);
         click = Gdx.audio.newSound(Gdx.files.internal("button-3.mp3"));
     }
     public void update(float dt){
@@ -52,7 +61,7 @@ public class MainCharacter {
         }
 
         velocity.scl(1/dt);
-        hitBox.setPosition(position.x,position.y);
+        hitBox.setPosition(position.x+4,position.y);
     }
 
     public void move(){

@@ -23,14 +23,14 @@ public class PauseState extends State{
     public PauseState(GameStateManager gsm) {
         super(gsm);
 
-        menuTexture = new Texture("play.png");
-        restartTexture = new Texture("retry.png");
-        resumeTexture = new Texture("settings.png");
+        menuTexture = new Texture("menu.png");
+        restartTexture = new Texture("restart.png");
+        resumeTexture = new Texture("resume.png");
         menuBtn = new GameButton(DontDie.cam.position.x - menuTexture.getWidth()/2,DontDie.HEIGHT/2-50, menuTexture, stage);
         restartBtn = new GameButton(DontDie.cam.position.x - restartTexture.getWidth()/2,DontDie.HEIGHT/2-150, restartTexture, stage);
         resumeBtn = new GameButton(DontDie.cam.position.x - resumeTexture.getWidth()/2,DontDie.HEIGHT/2-250, resumeTexture, stage);
         background = new Texture(DontDie.backGround);
-        gamepause_title = new Texture("title.png");
+        gamepause_title = new Texture("pauseMenu.png");
     }
 
 

@@ -53,8 +53,8 @@ public class InstructionState extends State {
         font = new BitmapFont();
         font.setColor(Color.LIME);
 
-        mainCharacter = new MainCharacter(jumpTexture.getWidth()+30, 0, "player.png");
-        bossCharacter = new BossCharacter(DontDie.WIDTH - shootTexture.getWidth()-60, 0, "FlameDemon Evolved.png");
+        mainCharacter = new MainCharacter(jumpTexture.getWidth()+30, 0);
+        bossCharacter = new BossCharacter(DontDie.WIDTH - shootTexture.getWidth()-60, 0, "FlameDemon Evolved.png",100);
 
 
 

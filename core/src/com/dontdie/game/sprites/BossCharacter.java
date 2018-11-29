@@ -14,6 +14,7 @@ public class BossCharacter {
     public Texture bossCharacter;
     public Rectangle hitBox;
     public String textureName;
+    public float fullHealth;
 
 
     public Vector3 getPosition() {
@@ -24,14 +25,15 @@ public class BossCharacter {
         return bossCharacter;
     }
 
-    public BossCharacter(int x, int y, String texture) {
+    public BossCharacter(int x, int y, String texture, float health) {
         position = new Vector3(x, y, 0);
         goUp = new Vector3(0, Y_MOVEMENT, 0);
         goDown = new Vector3(0, -Y_MOVEMENT, 0);
         up = false;
         textureName= texture;
+        fullHealth = health;
         bossCharacter = new Texture(texture);
-        hitBox = new Rectangle(x,y,bossCharacter.getWidth(),bossCharacter.getHeight());
+        hitBox = new Rectangle(x+10,y,bossCharacter.getWidth()/2,bossCharacter.getHeight());
 
     }
 
@@ -59,7 +61,7 @@ public class BossCharacter {
         } else {
             position.add(goDown);
         }
-        hitBox.setPosition(position.x,position.y);
+        hitBox.setPosition(position.x+10,position.y);
     }
 
     public Rectangle getHitBox() {
