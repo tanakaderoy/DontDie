@@ -32,7 +32,6 @@ public class PlayState extends State {
     private Texture statContainer;
     private Texture shootTexture;
     private Texture jumpTexture;
-    private Texture pauseTexture;
     public float timeAlive;
     private float aliveSecs = 0.01f;
     private float bossShootDelay =  2.5f;
@@ -46,11 +45,13 @@ public class PlayState extends State {
     private float bossHealth = 100;
     private GameButton shootButton;
     private GameButton jumpButton;
+<<<<<<< HEAD
     public static GameButton pauseButton;
+=======
+>>>>>>> parent of 5c8e6a5... Pause State, Pause Button
     BossCharacterProjectile bossProjectile;
     MainCharacterProjectile mainProjectile;
     private BitmapFont font;
-
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -67,7 +68,6 @@ public class PlayState extends State {
         statContainer = new Texture("box.png");
         shootTexture = new Texture("shootButton.png");
         jumpTexture = new Texture("jump.png");
-        pauseTexture = new Texture("retry.png");
 
         coinCount = 0;
         ammoCount = 0;
@@ -85,7 +85,6 @@ public class PlayState extends State {
 
         jumpButton = new GameButton(0,0,jumpTexture,stage);
         shootButton = new GameButton(DontDie.WIDTH - shootTexture.getWidth(), 0, shootTexture, stage);
-        pauseButton = new GameButton(DontDie.WIDTH - pauseTexture.getWidth(), DontDie.HEIGHT - 100, pauseTexture, stage);
 
     }
 
@@ -101,6 +100,7 @@ public class PlayState extends State {
         handleInput();
         //MAIN CHARACTER JUMP
         jumpDelay -= dt;
+<<<<<<< HEAD
         pauseDelay -= dt;
         if(pauseButton.isPressed() ){
 
@@ -112,6 +112,9 @@ public class PlayState extends State {
             //pauseDelay = 1f;
         }
         if(jumpButton.isPressed() && jumpDelay < 0.0f) {
+=======
+        if(jumpButton.isUpPressed() && jumpDelay < 0.0f) {
+>>>>>>> parent of 5c8e6a5... Pause State, Pause Button
             mainCharacter.move();
             jumpDelay = 0.1f;
         }
@@ -258,8 +261,11 @@ public class PlayState extends State {
         spriteBatch.end();
         shootButton.draw(stage);
         jumpButton.draw(stage);
+<<<<<<< HEAD
         pauseButton.draw(stage);
 
+=======
+>>>>>>> parent of 5c8e6a5... Pause State, Pause Button
     }
 
     @Override

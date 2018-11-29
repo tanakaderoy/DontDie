@@ -94,10 +94,7 @@ project(":ios") {
 
 project(":core") {
     apply plugin: "java"
-    sourceSets{
-        test{java.srcDirs = ['src/test/java']}
-    }
-
+    sourceSets.test.java.srcDirs = ["/test"]
 
 
     dependencies {
