@@ -5,12 +5,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.dontdie.game.State.GameStateManager;
 import com.dontdie.game.State.MenuState;
 
+
+////SINGLETON CLASS OF THE APPLICATION
 public class DontDie extends ApplicationAdapter {
 	public static final int WIDTH = 800;
 	public static final int HEIGHT = 480;
@@ -24,18 +25,15 @@ public class DontDie extends ApplicationAdapter {
 	private SpriteBatch batch;
 	public static FitViewport viewport;
 	public static OrthographicCamera cam;
-
 	public static Music music;
 
-	public static void setBackground(String background){
-		backGround = background;
-	}
 
-
+////SET BEST TIME ALIVE
 	public static void setBestTime(float besttime){
 		bestTime = besttime;
 	}
 
+////SET YOUR TIME ALIVE
 	public static void setYourTime(float yourtime) {
 		yourTime = yourtime;
 	}
@@ -46,7 +44,7 @@ public class DontDie extends ApplicationAdapter {
 		return instance.batch;
 	}
 
-
+////CREATES GAME
 	@Override
 	public void create () {
 		instance = this;

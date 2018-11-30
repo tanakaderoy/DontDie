@@ -18,15 +18,17 @@ public class MainCharacter {
     public Sound click;
     public String textureName = "player.png";
 
+////RETURNS MAIN CHARACTER'S POSITION
     public Vector3 getPosition() {
         return position;
     }
 
+////SETS MAIN CHARACTER'S TEXTURE
     public void setMainCharacterTexture(String setTexture){
         textureName = setTexture;
     }
 
-
+////RETURNS TEXTURE DICTATED BY THE MAIN CHARACTER HAVING OR NOT HAVING SHIELDS
     public Texture getMainCharacter() {
         if (textureName == "player.png") {
             return mainCharacter;
@@ -46,6 +48,8 @@ public class MainCharacter {
         hitBox = new Rectangle(x+4,y,mainCharacter.getWidth()-8,mainCharacter.getHeight()-4);
         click = Gdx.audio.newSound(Gdx.files.internal("button-3.mp3"));
     }
+
+
     public void update(float dt){
         if(position.y >0) {
             velocity.add(0, GRAVITY, 0);
@@ -64,11 +68,13 @@ public class MainCharacter {
         hitBox.setPosition(position.x+4,position.y);
     }
 
+////CAUSE THE MAIN CHARACTER TO JUMP
     public void move(){
         velocity.y = 350;
-        click.play();
+        click.play(0.1f);
     }
 
+////GETS COLLISION DETECTION BOX
     public Rectangle getHitBox() {  // sends the dimentions of the maincharacters hitbox
         return hitBox;
     }

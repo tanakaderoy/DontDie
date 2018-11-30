@@ -16,15 +16,17 @@ public class BossCharacter {
     public String textureName;
     public float fullHealth;
 
-
+////RETURN BOSS CHARACTER'S POSITION
     public Vector3 getPosition() {
         return position;
     }
 
+////RETURN BOSS CHARACTER'S TEXTURE
     public Texture getBossCharacter() {
         return bossCharacter;
     }
 
+////BOSS CHARACTER CONSTRUCTOR (X-COORDINATE, Y-COORDINATE, BOSS CHARACTER TEXTURE, BOSS HEALTH)
     public BossCharacter(int x, int y, String texture, float health) {
         position = new Vector3(x, y, 0);
         goUp = new Vector3(0, Y_MOVEMENT, 0);
@@ -37,7 +39,7 @@ public class BossCharacter {
 
     }
 
-
+////BOSS CHARACTER CONSTANTLY MOVES UP AND DOWN BASED ON MAIN CHARACTER'S POSITION
     public void update(MainCharacter mainCharacter) {
 
         if (position.y < 0) {
@@ -64,6 +66,7 @@ public class BossCharacter {
         hitBox.setPosition(position.x+10,position.y);
     }
 
+////RETURNS COLLISION DETECTION BOX
     public Rectangle getHitBox() {
         return hitBox;
     }

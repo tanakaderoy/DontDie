@@ -14,10 +14,12 @@ public class MainCharacterProjectile {
     private static Rectangle hitArea;
     public boolean shotsFired;
 
+////RETURNS MAIN CHARACTER'S PROJECTILE POSITION
     public Vector3 getPosition() {
         return position;
     }
 
+////RETURNS MAIN CHARACTER'S PROJECTILE TEXTURE
     public Texture getPew() {
         return pew;
     }
@@ -25,12 +27,13 @@ public class MainCharacterProjectile {
     public MainCharacterProjectile(float x, float y){
         start = x;
         position = new Vector3(x, y, 0);
-        shoot_velo = new Vector3(9, 0, 0);
+        shoot_velo = new Vector3(12, 0, 0);
         pew = new Texture("redfireball.png");
         hitArea = new Rectangle(x,y, pew.getWidth(), pew.getHeight());
         shotsFired = false;
     }
 
+////IF PROJECTILE IS STILL ON SCREEN, MOVE WITH THE SET SHOOTING VELOCITY
     public boolean update(MainCharacter mainCharacter){
 
         if (position.x > DontDie.WIDTH){
@@ -41,6 +44,7 @@ public class MainCharacterProjectile {
         return true;
     }
 
+////COLLISION DETECTION
     public boolean collides(Rectangle player){
         return player.overlaps(hitArea);
     }

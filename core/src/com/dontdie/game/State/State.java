@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.dontdie.game.DontDie;
 
+////CLASS WHICH ALL STATES EXTEND FROM
 public abstract class State {
 
 

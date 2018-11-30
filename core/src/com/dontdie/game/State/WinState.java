@@ -8,44 +8,33 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.dontdie.game.DontDie;
 
-////STATE THAT COMES UP WHEN MAIN CHARACTER DIES
-public class DeathState extends State {
+////STATE THAT APPEARS AFTER ALL BOSSES ARE DEFEATED
+public class WinState extends State {
     private Texture backGround;
-    private Texture deathMessage;
+    private Texture winMessage;
     private Texture statContainer;
-    private Texture retryTexture;
     private Texture menuTexture;
-    private GameButton retryBtn;
     private GameButton menuBtn;
     private BitmapFont font;
 
-    public DeathState(GameStateManager gsm){
+    public WinState(GameStateManager gsm){
         super(gsm);
 
         backGround = new Texture(DontDie.backGround);
-        deathMessage = new Texture("DeathStateMessage.png");
+        winMessage = new Texture("winner.png");
         statContainer = new Texture("box.png");
-        retryTexture = new Texture("retry.png");
         menuTexture = new Texture("menu.png");
         font = new BitmapFont();
         font.setColor(Color.LIME);
 
-        retryBtn = new GameButton(100, 100, retryTexture,stage);
-        menuBtn = new GameButton(500, 100, menuTexture,stage);
+        menuBtn = new GameButton(DontDie.WIDTH - menuTexture.getWidth(), 0, menuTexture,stage);
 
     }
     @Override
     public void handleInput(){
 
-////RESTART GAME ON PRESS OF RETRY BUTTON
-        if (retryBtn.isPressed()){
-            gsm.pop();
-            gsm.set(new PlayState(gsm));
-        }
-
-////GO BACK TO MAIN MENU ON PRESS OF MENU BUTTON
-        else if (menuBtn.isPressed()){
-            gsm.pop();
+        ////GO BACK TO MAIN MENU ON TOUCH OF MENU BUTTON
+        if (menuBtn.isPressed()){
             gsm.set(new MenuState(gsm));
         }
     }
@@ -63,12 +52,10 @@ public class DeathState extends State {
         spriteBatch.setProjectionMatrix(DontDie.cam.combined);
         spriteBatch.begin();
         spriteBatch.draw(backGround,0, 0);
-        spriteBatch.draw(deathMessage, DontDie.cam.position.x - deathMessage.getWidth()/2, 200);
+        spriteBatch.draw(winMessage, DontDie.cam.position.x - winMessage.getWidth()/2, 60, winMessage.getWidth(), DontDie.HEIGHT-60 );
         spriteBatch.draw(statContainer, 0,0,DontDie.WIDTH, 60);
-        font.draw(spriteBatch, "YOUR TIME ALIVE: " + String.format("%,.2f",DontDie.yourTime) + " seconds", 300, 20);
-        font.draw(spriteBatch, "BEST TIME ALIVE: " + String.format("%,.2f",DontDie.bestTime) + " seconds", 300, 45);
+        font.draw(spriteBatch, "YOUR TIME ALIVE: " + String.format("%,.2f",DontDie.yourTime) + " seconds", 300, 40);
         spriteBatch.end();
-        retryBtn.draw(stage);
         menuBtn.draw(stage);
     }
 
@@ -77,6 +64,6 @@ public class DeathState extends State {
     @Override
     public void dispose(){
         backGround.dispose();
-        deathMessage.dispose();
+        winMessage.dispose();
     }
 }

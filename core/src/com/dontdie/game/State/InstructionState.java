@@ -13,35 +13,30 @@ import com.dontdie.game.sprites.BossCharacter;
 import com.dontdie.game.sprites.MainCharacter;
 
 
-
+/*
+STATE THAT COMES ON SCREEN AFTER PLAY BUTTON IS PRESSED
+IN MENU STATE. SHOWS INSTRUCTIONS.
+*/
 public class InstructionState extends State {
         private Texture backGround;
         private Texture instructions;
         private MainCharacter mainCharacter;
-
         private BossCharacter bossCharacter;
-
         private Texture statContainer;
         private Texture shootTexture;
         private Texture jumpTexture;
         public float timeAlive;
-
         public int coinCount;
         public int ammoCount;
-
         private GameButton shootButton;
         private GameButton jumpButton;
-
         private BitmapFont font;
-
-
 
     public InstructionState(GameStateManager gsm){
         super(gsm);
 
         backGround = new Texture(DontDie.backGround);
         instructions = new Texture("instructions.png");
-
         statContainer = new Texture("box.png");
         shootTexture = new Texture("shootButton.png");
         jumpTexture = new Texture("jump.png");
@@ -56,13 +51,13 @@ public class InstructionState extends State {
         mainCharacter = new MainCharacter(jumpTexture.getWidth()+30, 0);
         bossCharacter = new BossCharacter(DontDie.WIDTH - shootTexture.getWidth()-60, 0, "FlameDemon Evolved.png",100);
 
-
-
         jumpButton = new GameButton(0,0,jumpTexture,stage);
         shootButton = new GameButton(DontDie.WIDTH - shootTexture.getWidth(), 0, shootTexture, stage);
     }
 
     public void handleInput(){
+
+        ////IF SCREEN IS TOUCHED ANYWHERE, START GAME
         if (Gdx.input.justTouched()){
             gsm.set(new PlayState(gsm));
         }
@@ -72,6 +67,7 @@ public class InstructionState extends State {
         handleInput();
     }
 
+////DRAW IMAGES
     public void render(SpriteBatch spriteBatch){
         Gdx.gl.glClearColor(1,1,1,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

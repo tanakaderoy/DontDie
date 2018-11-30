@@ -13,13 +13,16 @@ public class Item {
     private Rectangle hitArea;
     public String textureName;
 
+////RETURN ITEM'S POSITION
     public Vector3 getPosition(){
         return position;
     }
 
+////RETURN TEXTURE OF ITEM
     public Texture getItemTexture(){
         return itemTexture;
     }
+
     public Item(int x, int y, String texture){
         position = new Vector3(x, y,0);
         itemMovement = new Vector3(X_MOVEMENT,0 ,0);
@@ -28,6 +31,7 @@ public class Item {
         hitArea = new Rectangle(x,y,itemTexture.getWidth(),itemTexture.getHeight());
     }
 
+////ITEMS SHOULD CONSTANTLY BE MOVING AT A STEADY PACE FROM RIGHT TO LEFT
     public boolean update(){
         if (position.x < -itemTexture.getWidth()){
             return false;
@@ -37,6 +41,7 @@ public class Item {
         return true;
     }
 
+////COLLISION DETECTION
     public boolean collides(Rectangle player){
         return player.overlaps(hitArea);
     }

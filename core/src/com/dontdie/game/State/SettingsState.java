@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.dontdie.game.DontDie;
 
+////SETTINGS MENU
 public class SettingsState extends State{
     public Texture background;
     private Texture soundOnTexture;
@@ -13,7 +14,6 @@ public class SettingsState extends State{
     private Texture settingsMenu;
     private Texture menuTexture;
     private Texture soundButtonTexture;
-    //private GameButton soundOnButton;
     private GameButton soundButton;
     private GameButton menuButton;
 
@@ -26,26 +26,26 @@ public class SettingsState extends State{
         settingsMenu = new Texture("settingsMenu.png");
         menuTexture = new Texture("menu.png");
         background = new Texture(DontDie.backGround);
-        soundButtonTexture = soundOffTexture;
-        //soundOnButton = new GameButton(0,0,soundOnTexture,stage);
+        soundButtonTexture = soundOnTexture;
         soundButton = new GameButton(DontDie.cam.position.x - soundOnTexture.getWidth()/2,DontDie.cam.position.y - soundOnTexture.getHeight()/2 - 50,soundButtonTexture,stage);
         menuButton = new GameButton(DontDie.cam.position.x - menuTexture.getWidth()/2, 10, menuTexture, stage);
 
     }
 
+////TURNS SOUND ON AND OFF BASED ON TOUCH OF THE SOUND BUTTON
     @Override
     public void handleInput(){
         if(menuButton.isPressed()){
             gsm.set(new MenuState(gsm));
-        }else if (soundButton.isPressed() && soundButtonTexture == soundOffTexture){
+        }else if (soundButton.isPressed() && soundButtonTexture == soundOnTexture){
             System.out.println("MUTE SOUND!!!!!!!!!");
             DontDie.music.setVolume(0.0f);
-            soundButtonTexture = soundOnTexture;
+            soundButtonTexture = soundOffTexture;
             soundButton = new GameButton(DontDie.cam.position.x - soundOnTexture.getWidth()/2,DontDie.cam.position.y - soundOnTexture.getHeight()/2-50,soundButtonTexture,stage);
-        } else if (soundButton.isPressed() && soundButtonTexture == soundOnTexture) {
+        } else if (soundButton.isPressed() && soundButtonTexture == soundOffTexture) {
             System.out.println("SOUND ON!!!!!!!!!");
             DontDie.music.setVolume(0.1f);
-            soundButtonTexture = soundOffTexture;
+            soundButtonTexture = soundOnTexture;
             soundButton = new GameButton(DontDie.cam.position.x - soundOnTexture.getWidth()/2,DontDie.cam.position.y - soundOnTexture.getHeight()/2-50,soundButtonTexture,stage);
 
         }
@@ -56,6 +56,7 @@ public class SettingsState extends State{
         handleInput();
     }
 
+////DRAW IMAGES
     @Override
     public void render(SpriteBatch spriteBatch){
         spriteBatch.setProjectionMatrix(DontDie.cam.combined);
